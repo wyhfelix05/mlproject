@@ -1,66 +1,61 @@
 import os
 import sys
-import pickle
+
+import numpy as np 
 import pandas as pd
+import pickle
+from sklearn.metrics import r2_score
+from sklearn.model_selection import GridSearchCV
 
 from src.exception import CustomException
 
-
-def ensure_dir(path: str):
-    """
-    如果目录不存在则自动创建。
-    """
-    try:
-        os.makedirs(path, exist_ok=True)
-    except Exception as e:
-        raise CustomException(e, sys)
-
-
 def save_object(file_path, obj):
-    """
-    使用 pickle 将对象保存到指定路径。
-    """
     try:
         dir_path = os.path.dirname(file_path)
-        ensure_dir(dir_path)
+
+        os.makedirs(dir_path, exist_ok=True)
 
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
+
     except Exception as e:
         raise CustomException(e, sys)
+    
+def evaluate_models(X_train, y_train,X_test,y_test,models,param):
+    try:
+        report = {}
 
+        for i in range(len(list(models))):
+            model = list(models.values())[i]
+            para=param[list(models.keys())[i]]
 
+            gs = GridSearchCV(model,para,cv=3)
+            gs.fit(X_train,y_train)
+
+            model.set_params(**gs.best_params_)
+            model.fit(X_train,y_train)
+
+            #model.fit(X_train, y_train)  # Train model
+
+            y_train_pred = model.predict(X_train)
+
+            y_test_pred = model.predict(X_test)
+
+            train_model_score = r2_score(y_train, y_train_pred)
+
+            test_model_score = r2_score(y_test, y_test_pred)
+
+            report[list(models.keys())[i]] = test_model_score
+
+        return report
+
+    except Exception as e:
+        raise CustomException(e, sys)
+    
 def load_object(file_path):
-    """
-    从指定路径加载 pickle 对象。
-    """
     try:
         with open(file_path, "rb") as file_obj:
             return pickle.load(file_obj)
-    except Exception as e:
-        raise CustomException(e, sys)
 
-
-def load_csv(file_path: str) -> pd.DataFrame:
-    """
-    安全加载 CSV 文件为 DataFrame。
-    """
-    try:
-        if not os.path.exists(file_path):
-            raise FileNotFoundError(f"CSV 文件不存在: {file_path}")
-        return pd.read_csv(file_path)
-    except Exception as e:
-        raise CustomException(e, sys)
-
-
-def save_csv(df: pd.DataFrame, file_path: str, index=False):
-    """
-    安全保存 DataFrame 为 CSV。
-    """
-    try:
-        dir_path = os.path.dirname(file_path)
-        ensure_dir(dir_path)
-
-        df.to_csv(file_path, index=index)
     except Exception as e:
         raise CustomException(e, sys)
