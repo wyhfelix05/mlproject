@@ -20,7 +20,7 @@ class DataIngestion:
         logging.info("Entered the data ingestion method or component")
         try:
             # 读取 CSV 文件
-            df = pd.read_csv('data\house_Data.csv')
+            df = pd.read_csv(r'data/house_Data.csv', low_memory=False)
             logging.info('Read the dataset as dataframe')
 
             # 创建 artifacts 文件夹
