@@ -1,0 +1,57 @@
+# params.yaml
+
+data_ingestion:
+  test_size: 0.2
+  random_state: 42
+
+data_cleaning:
+  money_columns: ['price', 'service fee']
+  integer_columns: ['minimum nights', 'number of reviews', 'calculated host listings count']
+  float_columns: ['reviews per month']
+  categorical_columns: ['review rate number', 'Construction year']
+
+data_transformation:
+  numerical_columns:
+    - lat
+    - long
+    - service fee
+    - minimum nights
+    - number of reviews
+    - last review
+    - reviews per month
+    - calculated host listings count
+    - availability 365
+  categorical_columns:
+    - host_identity_verified
+    - neighbourhood group
+    - neighbourhood
+    - instant_bookable
+    - cancellation_policy
+    - room type
+    - Construction year
+    - review rate number
+  numeric_imputer_strategy: median
+  categorical_imputer_strategy: most_frequent
+  scaler: standard
+  one_hot_encode: True
+
+model_trainer:
+  performance_threshold: 0.6
+  random_forest:
+    n_estimators: [8, 16, 32, 64, 128, 256]
+  decision_tree:
+    criterion: ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
+  gradient_boosting:
+    learning_rate: [0.1, 0.01, 0.05, 0.001]
+    subsample: [0.6, 0.7, 0.75, 0.8, 0.85, 0.9]
+    n_estimators: [8, 16, 32, 64, 128, 256]
+  ridge:
+    alpha: [0.1, 1.0, 10.0, 50.0, 100.0]
+  lasso:
+    alpha: [0.001, 0.01, 0.1, 1.0, 10.0]
+  elasticnet:
+    alpha: [0.001, 0.01, 0.1, 1.0]
+    l1_ratio: [0.1, 0.3, 0.5, 0.7, 0.9]
+  xgb:
+    learning_rate: [0.1, 0.01, 0.05, 0.001]
+    n_estimators: [8, 16, 32, 64, 128, 256]

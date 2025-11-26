@@ -121,8 +121,8 @@ class ModelTrainer:
 # -------------------------
 if __name__ == "__main__":
     try:
-        from src.components.transform_data import DataTransformation
-        from src.components.clean_data import DataCleaningConfig
+        from src.components.data_transformation import DataTransformation
+        from src.components.data_cleaning import DataCleaningConfig
 
         # 1. 获取清洗后数据的路径
         config = DataCleaningConfig()

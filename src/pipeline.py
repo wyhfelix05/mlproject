@@ -5,9 +5,9 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 
-from src.components.load_data import DataIngestion
-from src.components.clean_data import DataCleaningConfig, DataCleaner
-from src.components.transform_data import DataTransformation
+from src.components.data_ingestion import DataIngestion
+from src.components.data_cleaning import DataCleaningConfig, DataCleaner
+from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 
 
