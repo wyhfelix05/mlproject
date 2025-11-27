@@ -12,7 +12,7 @@ data_cleaning:
   test_cleaned_path: artifacts/test_cleaned.csv
 
 data_transformation:
-  preprocessor_path: artifacts/preprocessor/preprocessor.pkl
+  preprocessor_path: artifacts/preprocessor.pkl
 
 model_trainer:
   trained_model_path: artifacts/model.pkl

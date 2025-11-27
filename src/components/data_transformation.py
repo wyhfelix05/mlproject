@@ -150,7 +150,7 @@ class DataTransformation:
 # 主入口：数据转换
 # -------------------------
 if __name__ == "__main__":
-    from src.components.clean_data import DataCleaningConfig
+    from src.components.data_cleaning import DataCleaningConfig
 
     try:
         # 清洗后的训练集和测试集路径
