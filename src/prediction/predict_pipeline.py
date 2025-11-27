@@ -3,7 +3,7 @@
 import sys
 import pandas as pd
 from src.prediction.input_cleaning import PredictInputCleaner
-from src.prediction.predictor import ModelPredictor
+from src.prediction.model_predictor import ModelPredictor
 from src.exception import CustomException
 from src.logger import logging
 

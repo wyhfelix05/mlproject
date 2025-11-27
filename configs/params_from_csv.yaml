@@ -1,0 +1,53 @@
+features:
+- name: id
+  dtype: int
+- name: NAME
+  dtype: str
+- name: host id
+  dtype: int
+- name: host_identity_verified
+  dtype: str
+- name: host name
+  dtype: str
+- name: neighbourhood group
+  dtype: str
+- name: neighbourhood
+  dtype: str
+- name: lat
+  dtype: float
+- name: long
+  dtype: float
+- name: country
+  dtype: str
+- name: country code
+  dtype: str
+- name: instant_bookable
+  dtype: str
+- name: cancellation_policy
+  dtype: str
+- name: room type
+  dtype: str
+- name: Construction year
+  dtype: float
+- name: price
+  dtype: str
+- name: service fee
+  dtype: str
+- name: minimum nights
+  dtype: float
+- name: number of reviews
+  dtype: float
+- name: last review
+  dtype: str
+- name: reviews per month
+  dtype: float
+- name: review rate number
+  dtype: float
+- name: calculated host listings count
+  dtype: float
+- name: availability 365
+  dtype: float
+- name: house_rules
+  dtype: str
+- name: license
+  dtype: str
