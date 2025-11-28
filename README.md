@@ -1,5 +1,17 @@
 # Airbnb Price Prediction with AWS Deployment
 
+## Table of Contents
+
+- [Description](#description)
+- [Tech Stack](#tech-stack)
+- [Project Structure (Simplified / Key Files)](#project-structure-simplified--key-files)
+- [Installation / Setup](#installation--setup)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Configuration](#configuration)
+- [License](#license)
+
+
 ## Description
 
 This project uses the Airbnb Open Data from Kaggle to build a machine learning model that predicts listing prices. As my first cloud deployment project, the goal is to create a lightweight prototype that resembles a production-style workflow.
@@ -125,7 +137,7 @@ The project uses YAML configuration files to manage paths, model parameters, and
 
 ### Key configuration files
 
-- `configs/vonfig.yaml`  
+- `configs/config.yaml`  
   Defines paths to input CSV files and output artifacts (e.g., preprocessed data, model output).
 
 - `configs/params.yaml` *(if applicable)*  
